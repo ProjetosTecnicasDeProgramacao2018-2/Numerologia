@@ -9,13 +9,19 @@ public class Formatador{
     // Se a palavra estiver vazia tambem retorna a excecao
     // Retorna a palavra em maiusculas 
     public String formataPalavra(String palavra){
-        //TODO
-    	return null;
+    	if(palavra.length() == 0) {
+    		throw new IllegalArgumentException();
+    	}
+    	
+    	if(palavra.matches("[a-zA-Z0-9]*")) {
+        	return palavra.toUpperCase();	
+    	}
+		throw new IllegalArgumentException();
     }
 
     // Utiliza o metodo formataPalavra e confere se a primeira letra nao e numerica
     public String formataPalavraPlus(String palavra) {
-        //TODO
+        
     	return null;
     }
 
