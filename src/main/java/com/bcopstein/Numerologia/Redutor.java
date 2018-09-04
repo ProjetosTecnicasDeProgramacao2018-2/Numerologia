@@ -16,7 +16,7 @@ public class Redutor{
     }
 
     // Decodifica um caracter segundo a tabela Pitagorica
-    private int tabPitagorica(char c){
+    private int tabPitagorica(char c){ //OK
         switch(c){
             case 'A':
             case 'J':
@@ -59,7 +59,7 @@ public class Redutor{
     }
 
     // Decodifica um caracter segundo a tabela Chaldean
-    private int tabChaldean(char c){
+    private int tabChaldean(char c){//OK
         switch(c){
             case 'A':
             case 'I':
@@ -101,9 +101,13 @@ public class Redutor{
     }
 
     // Decodifica um caracter segundo a tabela selecionada
-    private int decodChar(char c){
-        //TODO
-        return 0;
+    private int decodChar(char c){//OK
+    	if(tipoTab.equals(tipoTab.PITAGORICA)) {
+    		return tabPitagorica(c);
+    	}
+    	else {
+    		return tabChaldean(c);
+    	}
     }
 
     private String reducaoSimples(String str){
@@ -112,26 +116,35 @@ public class Redutor{
     }
 
     // Define o tipo de tabela da tabela corrente
-    public void setTipoTabela(TipoTabela tipo){
+    public void setTipoTabela(TipoTabela tipo){//OK
         tipoTab = tipo;
     }
 
     // Calcula a reducao de palavra usando a tabela corrente
     public int reducaoPalavra(String palavra){
-        //TODO
-        return 0;
+        char[] letras = palavra.toCharArray();
+        int soma=0;
+        for(char letra: letras) {
+        	soma+=decodChar(letra);
+        }
+        
+        return soma;
     }
 
     // Calcula a reducao de frase usando a tabela corrente
     public int reducaoFrase(String frase){
-        //TODO
-        return 0;
+        String[] palavras=frase.split(" ");
+        int soma=0;
+        for(String s: palavras) {
+        	soma+=reducaoPalavra(s);
+        }
+        return soma;
     }
 
     // Calcula a reducao de uma data no formato dd/mm/aaaa
     // Se estiver fora do formato lanca IllegalArgumentException
     public int reducaoData(String data){
-        //TODO
+        
         return 0;
     }
 }
