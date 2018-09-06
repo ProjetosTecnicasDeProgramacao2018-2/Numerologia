@@ -110,10 +110,10 @@ public class Redutor{
     	}
     }
 
-    private String reducaoSimples(String str){
+    //private String reducaoSimples(String str){
         //TODO
-        return null;
-    }
+        //return null;
+    //}
 
     // Define o tipo de tabela da tabela corrente
     public void setTipoTabela(TipoTabela tipo){//OK
@@ -127,6 +127,15 @@ public class Redutor{
         for(char letra: letras) {
         	soma+=decodChar(letra);
         }
+        while(soma>=10) {
+        	String num=Integer.toString(soma);
+        	char[] nums=num.toCharArray();
+        	int novaSoma=0;
+        	for(char numero: nums) {
+        		novaSoma+= numero - '0';
+        	}
+        	soma=novaSoma;
+        }
         
         return soma;
     }
@@ -138,13 +147,35 @@ public class Redutor{
         for(String s: palavras) {
         	soma+=reducaoPalavra(s);
         }
+        while(soma>=10) {
+        	String num=Integer.toString(soma);
+        	char[] nums=num.toCharArray();
+        	int novaSoma=0;
+        	for(char numero: nums) {
+        		novaSoma+= numero - '0';
+        	}
+        	soma=novaSoma;
+        }
         return soma;
     }
 
     // Calcula a reducao de uma data no formato dd/mm/aaaa
     // Se estiver fora do formato lanca IllegalArgumentException
     public int reducaoData(String data){
-        
-        return 0;
+    	int soma=0;
+    	String[] numData=data.split("/");
+    	for(String num: numData) {
+    		soma+=Integer.parseInt(num);
+    	}
+        while(soma>=10) {
+        	String num=Integer.toString(soma);
+        	char[] nums=num.toCharArray();
+        	int novaSoma=0;
+        	for(char numero: nums) {
+        		novaSoma+= numero - '0';
+        	}
+        	soma=novaSoma;
+        }
+        return soma;
     }
 }
