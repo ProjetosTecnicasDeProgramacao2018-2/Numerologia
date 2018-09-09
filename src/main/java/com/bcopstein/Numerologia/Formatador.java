@@ -52,9 +52,4 @@ public class Formatador{
     	
     	return fraseRetornada;
     }
-    
-    public static void main(String[] args) {
-    	Formatador f = new Formatador();
-    	System.out.println(f.formataPalavraPlus("Aha0s"));
-    }
 }
