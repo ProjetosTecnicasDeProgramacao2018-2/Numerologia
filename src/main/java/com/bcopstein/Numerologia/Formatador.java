@@ -21,8 +21,12 @@ public class Formatador{
 
     // Utiliza o metodo formataPalavra e confere se a primeira letra nao e numerica
     public String formataPalavraPlus(String palavra) {
-        
-    	return null;
+    	palavra = this.formataPalavra(palavra);
+    	String primeiro = palavra.charAt(0)+"";
+    	if(primeiro.matches("[0-9]")) {
+    		throw new IllegalArgumentException();
+    	}
+        return palavra;
     }
 
     // Formata frases compostas por palavras separadas por espacos em branco e/ou simbolos de pontuacao
@@ -30,8 +34,22 @@ public class Formatador{
     // As palavras da frase devem ser convertidas pelo metodo formataPalavra
     // Qualquer outro simbolo gera IllegalArgumentException
     // Retorna um array de palavras validas 
+    // PROFESSOR DISSE PARA RETORNAR COM ESPAÇO COMO SEPARADOR
     public String formataFrase(String frase){
-        //TODO
-    	return null;
+    	if(frase.length() == 0) {
+    		throw new IllegalArgumentException();
+    	}
+    	
+    	String[] listaPalavras = frase.split("[ ,.;]");
+    	String fraseRetornada = "";
+    	for(int i = 0; i < listaPalavras.length; i++) {
+    		String palavra = listaPalavras[i];
+			fraseRetornada += this.formataPalavra(palavra);
+			if(i < listaPalavras.length-1) {
+				fraseRetornada += " ";	
+			}
+    	}
+    	
+    	return fraseRetornada;
     }
 }
