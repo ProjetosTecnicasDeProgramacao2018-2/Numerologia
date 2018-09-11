@@ -2,67 +2,61 @@ package com.bcopstein.Numerologia;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class testFormatador {
-	private Formatador formatador;
-	
-	//EXECUTA ANTES DE TODOS TESTES
+	private static Formatador formatador;
+
+	// EXECUTA ANTES DE TODOS TESTES
 	@BeforeEach
 	public void setUp() {
-		this.formatador = new Formatador();
+		formatador = new Formatador();
 	}
 
 	// ----------------- INICIO formataPalavra -----------------
-	@Test
-	void testFormataPalavra() { 
-		assertEquals("ABCD96", this.formatador.formataPalavra("Abcd96"));
+
+	@ParameterizedTest
+	@CsvSource({"Abcd96,ABCD96"})
+	void testFormataPalavra(String palavraInput, String palavraOutput) {
+		assertEquals(palavraOutput, formatador.formataPalavra(palavraInput));
 	}
-	@Test
-	void testExceptionFormataPalavraNulo() {
-		assertThrows(IllegalArgumentException.class, () -> this.formatador.formataPalavra(""));
+
+	@ParameterizedTest
+	@CsvSource({"''","@douglas&Pedro"})
+	public void testExceptionFormataPalavra(String palavra) {
+		assertThrows(IllegalArgumentException.class, () -> formatador.formataPalavra(palavra));
 	}
-	@Test
-	void testExceptionFormataPalavraComCaracteresEspeciais() {
-		assertThrows(IllegalArgumentException.class, () -> this.formatador.formataPalavra("@douglas&Pedro"));
-	}
+
 	// ----------------- FIM formataPalavra -----------------
-	
+
 	// ----------------- INICIO formataPalavraPlus -----------------
-	@Test
-	void testFormataPalavraPlus() {
-		assertEquals("AB96", this.formatador.formataPalavraPlus("Ab96"));
+	@ParameterizedTest
+	@CsvSource({"Ab96,AB96"})
+	void testFormataPalavraPlus(String palavraInput, String palavraOutput) {
+		assertEquals(palavraOutput, formatador.formataPalavraPlus(palavraInput));
 	}
-	@Test
-	void testExceptionFormataPalavraPlusNulo() {
-		assertThrows(IllegalArgumentException.class, () -> this.formatador.formataPalavraPlus(""));
-	}
-	@Test
-	void testExceptionFormataPalavraPlusComCaracteresEspeciais() {
-		assertThrows(IllegalArgumentException.class, () -> this.formatador.formataPalavraPlus("@douglas&Pedro"));
-	}
-	@Test
-	void testExceptionFormataPalavraPlusComNumeroNoInicio() {
-		assertThrows(IllegalArgumentException.class, () -> this.formatador.formataPalavraPlus("9douglas"));
+
+	@ParameterizedTest
+	@CsvSource({"''","@douglas&Pedro","9douglas"})
+	void testExceptionFormataPalavraPlus(String palavraInput) {
+		assertThrows(IllegalArgumentException.class, () -> formatador.formataPalavraPlus(palavraInput));
 	}
 	// ----------------- FIM formataPalavraPlus -----------------
-	
 
 	// ----------------- INICIO formataFrase -----------------
-	@Test
-	void testFormataFrase() {
-		assertEquals("ABCD 96 54 HSU", this.formatador.formataFrase("abcd 96 54 hsu"));
+	@ParameterizedTest
+	@CsvSource({"'abcd 15 10 hsu9', 'ABCD 15 10 HSU9'"})
+	void testFormataFrase(String fraseInput, String fraseOutput) {
+		System.out.println(formatador.formataFrase(fraseInput));
+		assertEquals(fraseOutput, formatador.formataFrase(fraseInput));
 	}
-	@Test
-	void testExceptionFormataFraseNulo() {
-		assertThrows(IllegalArgumentException.class, () -> this.formatador.formataFrase(""));
-	}
-	@Test
-	void testExceptionFormataFraseComCaracteresEspeciais() {
-		assertThrows(IllegalArgumentException.class, () -> this.formatador.formataFrase("douglas@op  ,  ;   pedr0M1lel&1"));
+
+	@ParameterizedTest
+	@CsvSource({"''","'douglas@op  ,  ;   pedr0M1lel&1'"})
+	void testExceptionFormataFrase(String fraseInput) {
+		assertThrows(IllegalArgumentException.class, () -> formatador.formataFrase(fraseInput));
 	}
 	// ----------------- FIM formataFrase -----------------
 }
