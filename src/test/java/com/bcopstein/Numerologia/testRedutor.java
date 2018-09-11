@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.runner.RunWith;
 
 import junitparams.JUnitParamsRunner;
-
+//kkk
 @RunWith(JUnitParamsRunner.class)
 public class testRedutor {
 	private Redutor r=new Redutor();
