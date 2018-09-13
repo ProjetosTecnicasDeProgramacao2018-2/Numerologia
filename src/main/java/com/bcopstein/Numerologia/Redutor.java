@@ -110,9 +110,9 @@ public class Redutor{
     	}
     }
 
-    private String reducaoSimples(String str){
-    	return null;
-    }
+    //private String reducaoSimples(String str){
+    	//return null;
+   // }
 
     // Define o tipo de tabela da tabela corrente
     public void setTipoTabela(TipoTabela tipo){//OK

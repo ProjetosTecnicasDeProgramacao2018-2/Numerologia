@@ -15,9 +15,21 @@ public class testRedutor {
 	@CsvSource({ "PEDRO,4",
 				 "DOUGLAS,7"
 				})
-	public void redTest(String input,int expect) {
+	public void redTest01(String input,int expect) {
 		assertEquals(r.reducaoPalavra(input),expect);
 	}
-	
-	
+	@ParameterizedTest
+	@CsvSource({ "JAMES BOND,11",
+				 "PEDRO XAVIER,11"
+				})
+	public void redTest02(String input,int expect) {
+		assertEquals(r.reducaoFrase(input),expect);
+	}
+	@ParameterizedTest
+	@CsvSource({ "07/22/1975,6",
+				 "09/08/1999,11"
+				})
+	public void redTest03(String input,int expect) {
+		assertEquals(r.reducaoData(input),expect);
+	}	
 }
