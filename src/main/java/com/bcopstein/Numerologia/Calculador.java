@@ -13,17 +13,15 @@ public class Calculador{
     }
 
     public int calculaNumeroDaVida(String data){
-        int numero = 0;
-        return numero;
+        return this.reducao.reducaoData(data);
     }
 
     public int calculaNumeroDestino(String nomeCompleto){
-        int numero = 0;
-        return numero;
+    	return this.reducao.reducaoFrase(this.formatador.formataFrase(nomeCompleto));
     }
 
     public int calculaNumeroDesejosDaAlma(String nomeCompleto){
-    	int numero = 0;
-        return numero;
+    	nomeCompleto = nomeCompleto.replaceAll("[^aeiou ]", "");
+        return this.reducao.reducaoFrase(this.formatador.formataFrase(nomeCompleto));
     }
 }
