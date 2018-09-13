@@ -27,7 +27,7 @@ public class testRedutor {
 	}
 	@ParameterizedTest
 	@CsvSource({ "07/22/1975,6",
-				 "09/08/1999,11"
+				 "09/08/1999,9"
 				})
 	public void redTest03(String input,int expect) {
 		assertEquals(r.reducaoData(input),expect);
