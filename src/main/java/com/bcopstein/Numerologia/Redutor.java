@@ -110,10 +110,26 @@ public class Redutor{
     	}
     }
 
-    //private String reducaoSimples(String str){
-        //TODO
-        //return null;
-    //}
+    private int reducaoSimples(String str){
+    	 String[] letras = str.split("");
+         int soma=0;
+         for(String letra: letras) {
+        	 if(letra.matches("[AEIOU]")) {
+        		 char []c=letra.toCharArray();
+        		 soma+=decodChar(c[0]);
+        	 }
+         }
+         while(soma>=10) {
+         	String num=Integer.toString(soma);
+         	char[] nums=num.toCharArray();
+         	int novaSoma=0;
+         	for(char numero: nums) {
+         		novaSoma+= numero - '0';
+         	}
+         	soma=novaSoma;
+         }
+        return soma;
+    }
 
     // Define o tipo de tabela da tabela corrente
     public void setTipoTabela(TipoTabela tipo){//OK
@@ -147,15 +163,6 @@ public class Redutor{
         for(String s: palavras) {
         	soma+=reducaoPalavra(s);
         }
-        while(soma>=10) {
-        	String num=Integer.toString(soma);
-        	char[] nums=num.toCharArray();
-        	int novaSoma=0;
-        	for(char numero: nums) {
-        		novaSoma+= numero - '0';
-        	}
-        	soma=novaSoma;
-        }
         return soma;
     }
 
@@ -163,19 +170,22 @@ public class Redutor{
     // Se estiver fora do formato lanca IllegalArgumentException
     public int reducaoData(String data){
     	int soma=0;
-    	String[] numData=data.split("/");
-    	for(String num: numData) {
-    		soma+=Integer.parseInt(num);
+    	String[] numData=data.split("");
+    	for(String num:numData ) {
+    		if(num.matches("[0-9]")) {
+    			int conv= Integer.parseInt(num);
+    			soma+=conv;
+    		}
     	}
-        while(soma>=10) {
-        	String num=Integer.toString(soma);
-        	char[] nums=num.toCharArray();
-        	int novaSoma=0;
-        	for(char numero: nums) {
-        		novaSoma+= numero - '0';
-        	}
-        	soma=novaSoma;
-        }
-        return soma;
+    	 while(soma>=10) {
+         	String num=Integer.toString(soma);
+         	char[] nums=num.toCharArray();
+         	int novaSoma=0;
+         	for(char numero: nums) {
+         		novaSoma+= numero - '0';
+         	}
+         	soma=novaSoma;
+         }
+         return soma;
     }
 }
