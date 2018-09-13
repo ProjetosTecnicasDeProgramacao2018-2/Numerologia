@@ -110,25 +110,8 @@ public class Redutor{
     	}
     }
 
-    private int reducaoSimples(String str){
-    	 String[] letras = str.split("");
-         int soma=0;
-         for(String letra: letras) {
-        	 if(letra.matches("[AEIOU]")) {
-        		 char []c=letra.toCharArray();
-        		 soma+=decodChar(c[0]);
-        	 }
-         }
-         while(soma>=10) {
-         	String num=Integer.toString(soma);
-         	char[] nums=num.toCharArray();
-         	int novaSoma=0;
-         	for(char numero: nums) {
-         		novaSoma+= numero - '0';
-         	}
-         	soma=novaSoma;
-         }
-        return soma;
+    private String reducaoSimples(String str){
+    	return null;
     }
 
     // Define o tipo de tabela da tabela corrente
