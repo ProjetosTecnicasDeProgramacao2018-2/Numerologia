@@ -21,20 +21,20 @@ public class testCalculador {
 		this.calculador = new Calculador(redutor, formatador);
 	}
 	public void create() {
-		when(redutor.reducaoData("07/22/1975,6")).thenReturn(6);
-		when(redutor.reducaoData("09/08/1999,9")).thenReturn(9);
-		when(redutor.reducaoFrase("JAMES BOND,11")).thenReturn(11);
-		when(redutor.reducaoFrase( "PEDRO XAVIER,11")).thenReturn(11);
-		when(redutor.reducaoPalavra("PEDRO,4")).thenReturn(4);
-		when(redutor.reducaoPalavra( "DOUGLAS,7")).thenReturn(7);
+		when(calculador.calculaNumeroDaVida("07/22/1975,6")).thenReturn(6);
+		when(calculador.calculaNumeroDaVida("09/08/1999,9")).thenReturn(9);
+		when(calculador.calculaNumeroDestino("JAMES BOND,11")).thenReturn(11);
+		when(calculador.calculaNumeroDestino( "PEDRO XAVIER,11")).thenReturn(11);
+		when(calculador.calculaNumeroDesejosDaAlma("PEDRO,2")).thenReturn(2);
+		when(calculador.calculaNumeroDesejosDaAlma( "DOUGLAS,1")).thenReturn(1);
 	}
 	@Test
 	public void test() {
-		assertSame(6,redutor.reducaoData("07/22/1975,6"));
-		assertSame(9,redutor.reducaoData("09/08/1999,9"));
-		assertSame(11,redutor.reducaoFrase("JAMES BOND,11"));
-		assertSame(11,redutor.reducaoFrase( "PEDRO XAVIER,11"));
-		assertSame(4,redutor.reducaoPalavra("PEDRO,4"));
-		assertSame(7,redutor.reducaoPalavra("DOUGLAS,7"));
+		assertSame(6,calculador.calculaNumeroDaVida("07/22/1975,6"));
+		assertSame(9,calculador.calculaNumeroDaVida("09/08/1999,9"));
+		assertSame(11,calculador.calculaNumeroDestino("JAMES BOND,11"));
+		assertSame(11,calculador.calculaNumeroDestino( "PEDRO XAVIER,11"));
+		assertSame(2,calculador.calculaNumeroDesejosDaAlma("PEDRO,2"));
+		assertSame(1,calculador.calculaNumeroDesejosDaAlma( "DOUGLAS,1"));
 	}
 }
