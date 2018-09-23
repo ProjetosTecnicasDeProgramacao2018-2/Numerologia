@@ -24,4 +24,5 @@ public class Calculador{
     	nomeCompleto = nomeCompleto.replaceAll("[^aeiou ]", "");
         return this.reducao.reducaoFrase(this.formatador.formataFrase(nomeCompleto));
     }
+    
 }

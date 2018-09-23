@@ -154,6 +154,7 @@ public class Redutor{
     public int reducaoData(String data){
     	int soma=0;
     	String[] numData=data.split("");
+    	
     	for(String num:numData ) {
     		if(num.matches("[0-9]")) {
     			int conv= Integer.parseInt(num);
